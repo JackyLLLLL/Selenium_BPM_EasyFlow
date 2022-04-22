@@ -40,6 +40,7 @@ password_xpath = (r"""//*[@id="txtPassword"]""")
 job_number = "W220002"
 password = "Rockerokandko2!"
 process_subject = "Test Selenium"
+part_number ="3MGC1NXB.0001S"
 
 driver.find_element("xpath",job_number_xpath).send_keys(job_number)
 driver.find_element("xpath",password_xpath).send_keys(password)
@@ -76,12 +77,16 @@ driver.find_element("xpath","""//*[@id="btnReference_LFE"]""").click() #點選�
 windows = driver.window_handles
 driver.switch_to.window(windows[-1]) #切換到當前最新的視窗
 
+driver.find_element("id","menu_tab").click() #點擊查詢
 
-driver.find_element("xpath","""//*[@id="_cuzDataChooser_criteria_0"]""").send_keys("3MGC1NXB.0001S") #查詢參考料號
+driver.find_element("xpath","""//*[@id="_cuzDataChooser_criteria_0"]""").send_keys(part_number) #輸入物料編號
+sleep(0.5)
 driver.find_element("xpath","""//*[@id="_btnCustomDataChooser_query"]""").click() #點擊搜尋
+driver.find_element("xpath","""//*[@id="_cuzDataChooserData"]/tr/td[1]""").click() #點擊料號確認
 
-#driver.find_element("xpath","""""").click()
-
+sleep(5)
+alert = driver.switch_to.alert
+alert.accept()
 print("Progarm finish")
 
 
