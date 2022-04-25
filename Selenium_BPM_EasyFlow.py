@@ -26,6 +26,7 @@ by_css_selector -> find_element("css selector","")
 
 url = r"http://bpm.hec-group.com.tw:8086/NaNaWeb/GP//ForwardIndex?hdnMethod=findIndexForward"
 
+file_path = r"C:\Users\jacky-lin\Dropbox\Elsa+Kevin\terminator 备品报价单(1)220414.xlsx"
 
 
 # 開啟瀏覽器視窗(Chrome)
@@ -41,6 +42,8 @@ job_number = "W220002"
 password = "Rockerokandko2!"
 process_subject = "Test Selenium"
 part_number ="3MGC1NXB.0001S"
+category_ID = "697261"
+customer_requirements = "輸入客戶要求生產注意事項"
 
 driver.find_element("xpath",job_number_xpath).send_keys(job_number)
 driver.find_element("xpath",password_xpath).send_keys(password)
@@ -75,8 +78,7 @@ driver.find_element("name","txtDescription").send_keys("這邊未來撈Execl資�
 driver.find_element("xpath","""//*[@id="cbPlusS_0"]""").click() #把尾碼+S給打勾起來
 driver.find_element("xpath","""//*[@id="btnReference_LFE"]""").click() #點選參考料號
 windows = driver.window_handles
-driver.switch_to.window(windows[-1]) #切換到當前最新的視窗
-
+driver.switch_to.window(windows[-1]) #切換到當前最新的視窗(參考料號選擇)
 driver.find_element("id","menu_tab").click() #點擊查詢
 
 driver.find_element("xpath","""//*[@id="_cuzDataChooser_criteria_0"]""").send_keys(part_number) #輸入物料編號
@@ -84,10 +86,52 @@ sleep(0.5)
 driver.find_element("xpath","""//*[@id="_btnCustomDataChooser_query"]""").click() #點擊搜尋
 driver.find_element("xpath","""//*[@id="_cuzDataChooserData"]/tr/td[1]""").click() #點擊料號確認
 
-sleep(5)
-alert = driver.switch_to.alert
-alert.accept()
+sleep(2)
+driver.switch_to.window(windows[0]) #切換到本來的視窗
+alert = driver.switch_to.alert #獲取彈出警告框，賦予變數名
+alert.accept() #接受彈出警告框
+driver.switch_to.frame("ifmFucntionLocation")#切換到嵌入的網頁
+driver.switch_to.frame("ifmAppLocation") #切換到嵌入的網頁
+driver.find_element("xpath","""//*[@id="btnCategory_LFE"]""").click() #點擊分類Category
+
+
+windows = driver.window_handles
+driver.switch_to.window(windows[-1]) #切換到分類Category
+driver.find_element("id","menu_tab").click() #點擊查詢
+sleep(0.5)
+driver.find_element("xpath","""//*[@id="_cuzDataChooser_criteria_0"]""").send_keys(category_ID) #輸入CategoryID
+driver.find_element("xpath","""//*[@id="_btnCustomDataChooser_query"]""").click() #點擊搜尋
+driver.find_element("xpath","""//*[@id="_cuzDataChooserData"]/tr/td[2]""").click() #點擊Category確認
+
+sleep(2)
+driver.switch_to.window(windows[0])#切換到本來的視窗
+driver.switch_to.frame("ifmFucntionLocation")#切換到嵌入的網頁
+driver.switch_to.frame("ifmAppLocation") #切換到嵌入的網頁
+driver.find_element("xpath","""//*[@id="txtNote"]""").send_keys(customer_requirements) #輸入客戶要求生產注意事項
+
+ 
+driver.find_element("xpath","""//*[@id="ilPE_btn"]""").click() #點擊PE工程承辦
+windows = driver.window_handles
+driver.switch_to.window(windows[-1])#切換到分類Category
+driver.find_element("xpath","""//*[@id="txtConditionValue"]""").send_keys("黃立鈞") #輸入人名搜尋
+driver.find_element("xpath","""//*[@id="btnStartQuerying"]""").click() #點擊搜尋
+driver.find_element("xpath","""/html/body/form/table/tbody/tr[3]/td/table/tbody/tr[2]/td[4]""").click()#點擊人名
+
+driver.switch_to.window(windows[0])#切換到本來的視窗
+driver.switch_to.frame("ifmFucntionLocation")#切換到嵌入的網頁
+driver.switch_to.frame("ifmAppLocation") #切換到嵌入的網頁
+driver.find_element("xpath","""//*[@id="ilSoucer_btn"]""").click() #點擊Sourcer承辦
+windows = driver.window_handles
+driver.switch_to.window(windows[-1])#切換到分類Category
+driver.find_element("xpath","""//*[@id="txtConditionValue"]""").send_keys("施怡君") #輸入人名搜尋
+driver.find_element("xpath","""//*[@id="btnStartQuerying"]""").click() #點擊搜尋
+driver.find_element("xpath","""/html/body/form/table/tbody/tr[3]/td/table/tbody/tr[2]/td[4]""").click()#點擊人名
+
+driver.switch_to.window(windows[0])#切換到本來的視窗
+driver.switch_to.frame("ifmFucntionLocation")#切換到嵌入的網頁
+#driver.find_element("xpath","""//*[@id="btnInvokeProcess"]""") #點擊發起
 print("Progarm finish")
+
 
 
 
