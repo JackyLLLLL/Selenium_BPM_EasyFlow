@@ -52,3 +52,6 @@ for i in range(len(part)):
 for i in range(len(part)):
     x = (f"{subject[i]}\n\n{product_description[i]}\n\n{customer_notice[i]}\n")
     print(x)
+
+
+    
