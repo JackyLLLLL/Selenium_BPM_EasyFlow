@@ -1,7 +1,7 @@
 import os
 
 
-path = r"C:\Users\jacky-lin\Desktop\新增資料夾"
+path = r"C:\Users\jacky-lin\Desktop\to Elsa PIC"
 
 files = os.listdir(path) #獲取資料夾路徑
 
@@ -25,12 +25,12 @@ for files in files: # 迭代输出所有文件和文件夹
 
     new_file_path = path + "\\" + new_file_name
 
-    new_file_path_2 = path + "\\" + f"{serial_number}-{file_name}.{file_name_count}{extension}"
+    new_file_path_2 = path + "\\" + f"{serial_number}-{file_name} ({file_name_count}){extension}"
 
     
     if os.path.exists(new_file_path):
         print(f"{count}.變更檔案名稱重複")
-        print(f"  更改名稱為:{serial_number}-{file_name}.{file_name_count}{extension}\n")
+        print(f"  更改名稱為:{serial_number}-{file_name} ({file_name_count}){extension}\n")
         os.rename(new_file_path,new_file_path_2)
 
         file_name_count += 1
