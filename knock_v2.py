@@ -1,9 +1,8 @@
 import selenium
 import time
-import threading
 from selenium import webdriver
 from time import sleep
-from datetime import datetime
+
 
 
 def start_chat():
@@ -67,33 +66,11 @@ def left():
             print("自動離開對話..")
             break
         except Exception as e:
-            pass
-
-def countdown(num_of_secs):
-    global min_sec_format
-
-    while num_of_secs:
-        m, s = divmod(num_of_secs, 60)
-        min_sec_format = '{:02d}:{:02d}'.format(m, s)
-        print(min_sec_format)
-        time.sleep(1)
-        num_of_secs -= 1
-
-def user_other():
-     while True:
-        try:
-            user_other = driver.find_element("css selector","""div.message.user.other""")
-            
-            print("對方回應")
-            break
-        except Exception as e:
-            print("無回應")
-            sleep(1)
-            pass    
+            pass 
 
 
 url = r"https://knock.tw/"
-mes = r"男"
+mes = input("請輸入第一句話:")
 count = 15
 
 if __name__ == "__main__":
@@ -109,9 +86,10 @@ if __name__ == "__main__":
         messager(mes)
         while True:
             try:
-                respond = driver.find_element("css selector","""div[class='message user other']""")
+                respond = driver.find_element("css selector","""div[style='background-color: rgb(40, 162, 223);']""")
                 if respond:
                     print("對方有回應")
+                    count = 15
                     break
             except:
                 pass                
@@ -119,20 +97,19 @@ if __name__ == "__main__":
                 if count == 0:
                     print("計時歸零離開")
                     left()
-                    count = 10
+                    count = 15
                     break  
                 else:
                     count -= 1
                     print(count)
                     sleep(1)
 
-
             try:
                 re_pair = driver.find_element("css selector","""button.message-content""")
                 if re_pair is not None:
                     re_pair.click()   
                     print("對方已離開，點擊重新配對..")
-                    count = 10
+                    count = 15
                     break
             except:
                 pass
