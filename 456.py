@@ -7,13 +7,15 @@ from datetime import datetime
 
 
 def start_chat():
-    try:
-        start_chat = driver.find_element("xpath","""//*[@id="app"]/div/button""") #點擊開始聊天
-        if start_chat is not None:
-            start_chat.click()
-            print("點擊開始聊天")
-    except Exception as e:
-        pass
+    while True:
+        try:
+            start_chat = driver.find_element("xpath","""//*[@id="app"]/div/button""") #點擊開始聊天
+            if start_chat is not None:
+                start_chat.click()
+                print("點擊開始聊天")
+                break
+        except Exception as e:
+            pass
     
 def messager(mes):
     while True:
@@ -91,7 +93,7 @@ def user_other():
 
 
 url = r"https://knock.tw/"
-mes = r"南"
+mes = r"男"
 count = 15
 
 if __name__ == "__main__":
@@ -110,7 +112,7 @@ if __name__ == "__main__":
                 respond = driver.find_element("css selector","""div[class='message user other']""")
                 if respond:
                     print("對方有回應")
-                    sleep(100)
+                    break
             except:
                 pass                
 
