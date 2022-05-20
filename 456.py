@@ -32,18 +32,14 @@ def re_pair():
     while True:
         try:
             re_pair = driver.find_element("css selector","""button.message-content""")
-            respond = driver.find_element("xpath","""//*[@id="app"]/div/div[1]/div[3]/div/div[2]/div/span[1]""")
-            respond_2 = driver.find_element("css selector","""div.message.user.other""")
-            respond_3 = driver.find_element("xpath","""//*[@id="app"]/div/div[1]/div[4]/div/div[2]/div""")
-            respond_4 = driver.find_element("xpath","""//*[@id="app"]/div/div[1]/div[4]/div""")
-            respond_5 = driver.find_element("css selector","""div.[style=background-color: rgb(40, 162, 223)]""")
+            respond = driver.find_element("css selector","""div[class='message user other']""")
             print(count)
             if re_pair is not None:
                 re_pair.click()   
                 print("對方已離開，點擊重新配對..")        
                 break
 
-            elif respond or respond_2  or respond_3 or respond_4 is not None:
+            elif respond is not None:
                 print("對方有回應")
                 break
  
@@ -95,7 +91,7 @@ def user_other():
 
 
 url = r"https://knock.tw/"
-mes = r"女"
+mes = r"南"
 count = 15
 
 if __name__ == "__main__":
@@ -111,27 +107,36 @@ if __name__ == "__main__":
         messager(mes)
         while True:
             try:
+                respond = driver.find_element("css selector","""div[class='message user other']""")
+                if respond:
+                    print("對方有回應")
+                    sleep(100)
+            except:
+                pass                
+
                 if count == 0:
                     print("計時歸零離開")
                     left()
-                    count = 15
-                    break
+                    count = 10
+                    break  
                 else:
                     count -= 1
                     print(count)
                     sleep(1)
-                
+
+
+            try:
                 re_pair = driver.find_element("css selector","""button.message-content""")
                 if re_pair is not None:
                     re_pair.click()   
                     print("對方已離開，點擊重新配對..")
-                    count = 15
+                    count = 10
                     break
-                
-            
-        
-            except Exception as e:
+            except:
                 pass
+                
+
+
             
 
         
