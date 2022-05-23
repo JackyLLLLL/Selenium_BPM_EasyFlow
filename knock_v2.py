@@ -79,17 +79,22 @@ if __name__ == "__main__":
     driver.get(url)
     
 
+    flag = True
+    
     while True:
         
         print("Start")
-        start_chat()
+        if flag == True:
+            start_chat()
         messager(mes)
+        
         while True:
             try:
                 respond = driver.find_element("css selector","""div[style='background-color: rgb(40, 162, 223);']""")
                 if respond:
                     print("對方有回應")
                     count = 15
+                    flag = True
                     break
             except:
                 pass                
@@ -98,6 +103,7 @@ if __name__ == "__main__":
                     print("計時歸零離開")
                     left()
                     count = 15
+                    flag = True
                     break  
                 else:
                     count -= 1
@@ -110,6 +116,7 @@ if __name__ == "__main__":
                     re_pair.click()   
                     print("對方已離開，點擊重新配對..")
                     count = 15
+                    flag = False
                     break
             except:
                 pass
