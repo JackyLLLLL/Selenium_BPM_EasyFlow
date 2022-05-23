@@ -8,7 +8,8 @@ from time import sleep
 def start_chat():
     while True:
         try:
-            start_chat = driver.find_element("xpath","""//*[@id="app"]/div/button""") #點擊開始聊天
+##            start_chat = driver.find_element("xpath","""//*[@id="app"]/div/button""") #點擊開始聊天
+            start_chat = driver.find_element("css selector","""button.start""") #點擊開始聊天
             if start_chat is not None:
                 start_chat.click()
                 print("點擊開始聊天")
