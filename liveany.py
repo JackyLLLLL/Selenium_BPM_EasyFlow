@@ -28,6 +28,16 @@ def respond():
 
     respond = driver.find_element("css selector","""div[class='bubble left yellow']""")
 
+def re_pair():
+    try:
+        re_pair = driver.find_element("css selector","""div[h4='陌生人離開~~']""")
+        print("Y")
+        sleep(1)
+    except:
+        print("N")
+        sleep(1)
+        pass
+
 
 url = r"https://www.liveany.com/web.html"
 mes = r"182男"
@@ -42,42 +52,44 @@ if __name__ == "__main__":
     flag = False  
 
     while True:
+          re_pair() #陌生人離開的元素尚未找到 要先抓到才可以 220524
         
-         print("Start")
-         if flag == True:
-            new_conncet()
-         send_messagner(mes)
-
-         while True:
-            try:
-              respond = driver.find_element("css selector","""div[class='bubble left yellow']""")
-              if respond:
-                  print("對方有回應")
-                  count = 15
-                  flag = True
-                  break
-            except:
-              pass
-
-              if count == 0:
-                  print("計時歸零離開")
-                  count = 15
-                  flag = True
-                  break
-              else:
-                  count -= 1
-                  print(count)
-                  sleep(1)
-
-            try:
-                re_pair = driver.find_element("css selector","""h4[陌生人離開~~]""")
-                if re_pair:   
-                    print("對方已離開，點擊重新配對..")
-                    count = 15
-                    flag = True
-                    break
-            except:
-                pass
+        
+##         print("Start")
+##         if flag == True:
+##            new_conncet()
+##         send_messagner(mes)
+##
+##         while True:
+##            try:
+##              respond = driver.find_element("css selector","""div[class='bubble left yellow']""")
+##              if respond:
+##                  print("對方有回應")
+##                  count = 15
+##                  flag = True
+##                  break
+##            except:
+##              pass
+##
+##              if count == 0:
+##                  print("計時歸零離開")
+##                  count = 15
+##                  flag = True
+##                  break
+##              else:
+##                  count -= 1
+##                  print(count)
+##                  sleep(1)
+##
+##            try:
+##                re_pair = driver.find_element("css selector","""h4[陌生人離開~~]""")
+##                if re_pair:   
+##                    print("對方已離開，點擊重新配對..")
+##                    count = 15
+##                    flag = True
+##                    break
+##            except:
+##                pass
              
          
 
