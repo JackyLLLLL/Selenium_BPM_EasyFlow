@@ -8,7 +8,8 @@ from selenium.webdriver import ChromeOptions
 
 url = r"https://wootalk.today/"
 secret_mes = r"成人模式"
-chrome_path = r"C:\Users\User\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+##chrome_path = r"C:\Users\User\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 
 
