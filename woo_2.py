@@ -1,5 +1,6 @@
 import selenium
 import time
+import random
 from selenium import webdriver
 from time import sleep
 
@@ -28,19 +29,21 @@ driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
 
 script = 'Object.defineProperty(navigator,"webdriver",{get:() => false,});'
 driver.execute_script(script)
-
 driver.get(url)
-sleep(7)
+
+x = random.uniform(6.8, 9.0)
+y = random.uniform(0.5, 2.0)
+sleep(x)
 
 driver.find_element("id","""menuButton""").click()
-sleep(1)
+sleep(y)
 driver.find_element("xpath","""/html/body/div[5]/div/ul[1]/li[1]/a""").click()
-sleep(1)
+sleep(y)
 driver.find_element("css selector","""input.keyword[value='成人模式']""").click()
-sleep(1)
+sleep(y)
 driver.find_element("css selector","""input#startButton""").click()
-sleep(2)
-driver.find_element("id","""messageInput]""").send_keys(mes)
+sleep(y)
+driver.find_element("id","""[messageInput]""").send_keys(mes)
 
 #<input type="text" id="messageInput" placeholder="輸入訊息" autocomplete="off">
 
