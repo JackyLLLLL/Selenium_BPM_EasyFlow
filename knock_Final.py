@@ -135,7 +135,7 @@ if __name__ == "__main__":
         print("Loop1")
         if flag == True:
             start_chat()
-            sleep(y)
+##            sleep(y)
         messager(mes)
         sleep(y)
         print("1")
