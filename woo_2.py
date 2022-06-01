@@ -63,7 +63,7 @@ actions = ActionChains(driver)
 ##sleep(y)
 ##driver.find_element("id","""[messageInput]""").send_keys(mes)
 
-#<input type="text" id="messageInput" placeholder="輸入訊息" autocomplete="off">
+
 
 start_chat = driver.find_element("css selector","""input#startButton""")
 actions.move_to_element(start_chat).click(start_chat)

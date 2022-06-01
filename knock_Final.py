@@ -102,7 +102,7 @@ def left():
 url = r"https://knock.tw/"
 mes = "台南182 電愛不約"
 chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
-chrome_path = r"C:\Users\user\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+##chrome_path = r"C:\Users\user\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 count = 15
 
@@ -127,12 +127,6 @@ if __name__ == "__main__":
     driver.get(url)
 
     flag = True
-
-
-
-
-        
-        
     
 
     while True:
@@ -161,11 +155,6 @@ if __name__ == "__main__":
                 sleep(y)
                 print("睡個覺一下")
 
-
-
-
-
-            
 
 
     
