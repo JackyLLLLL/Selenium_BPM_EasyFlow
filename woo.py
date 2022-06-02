@@ -14,7 +14,7 @@ def start_chat():
             actions = ActionChains(driver)
             
             if start_chat is not None:
-                sleep(0.5)
+                sleep(0.4)
                 actions.move_to_element(start_chat).click(start_chat)
                 actions.perform()
                 print("點擊開始聊天")
@@ -115,10 +115,7 @@ if __name__ == "__main__":
     driver.get(url)
 
     flag = True
-    y = random.uniform(0.2,0.9)
 
-    sleep(y)
-    
     while True:
         print("Start")
         if flag == True:
@@ -151,7 +148,6 @@ if __name__ == "__main__":
             try:
                 re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]/a""")
                 if re_pair is not None:
-                    sleep(1.5)
                     driver.find_element("css selector","""div#changeButton""").click()
                     print("對方已離開，點擊重新配對..")
                     count = 15
