@@ -132,76 +132,76 @@ if __name__ == "__main__":
 
     flag = True
     
-##    countdown = 0
-##    x = 0
-##    y = 1
-##    while True:
-##
-##        print("Program Start")
-##        if flag == True:
-##            start_chat()
-##        messager(mes)
-##        while True:
-##            try:
-##                re_pair = driver.find_element("css selector","""span.MuiButton-label""")
-##                if re_pair:
-##                    re_pair.click()
-##                    print("點擊重新配對")
-##                    flag = False
-##                    countdown = 0
-##                    y += 1
-##                    break
-##            except:
-##                pass
-##
-##
-##                if x == 0:
-##                    countdown += 1
-##                    print(f"累積配對人數:第{y}人,等待了: {countdown} 秒")
-##                    sleep(1)
-
-
+    countdown = 0
+    x = 0
+    y = 1
     while True:
-        print("Start")
+
+        print("Program Start")
         if flag == True:
             start_chat()
-            
         messager(mes)
-
         while True:
             try:
-                respond = driver.find_element("css selector","""div[style='']""")
-                respond = driver.find_element("xpath","""""")
-                
-                if respond:
-                    print("對方有回應")
-                    count = 15
-                    flag = True
-                    break
-            except:
-                pass                
-
-                if count == 0:
-                    print("計時歸零離開")
-                    left()
-                    count = 15
-                    flag = True
-                    break  
-                else:
-                    count -= 1
-                    print(count)
-                    sleep(1)
-
-            try:
-                re_pair = driver.find_element("css selector","""span.MuiButton-label""") #新的
-                if re_pair is not None:
-                    re_pair.click()   
-                    print("對方已離開，點擊重新配對..")
-                    count = 15
+                re_pair = driver.find_element("css selector","""span.MuiButton-label""")
+                if re_pair:
+                    re_pair.click()
+                    print("點擊重新配對")
                     flag = False
+                    countdown = 0
+                    y += 1
                     break
             except:
                 pass
+
+
+                if x == 0:
+                    countdown += 1
+                    print(f"累積配對人數:第{y}人,等待了: {countdown} 秒")
+                    sleep(1)
+
+
+##    while True:
+##        print("Start")
+##        if flag == True:
+##            start_chat()
+##            
+##        messager(mes)
+##
+##        while True:
+##            try:
+##                respond = driver.find_element("css selector","""div[style='']""")
+##                respond = driver.find_element("xpath","""""")
+##                
+##                if respond:
+##                    print("對方有回應")
+##                    count = 15
+##                    flag = True
+##                    break
+##            except:
+##                pass                
+##
+##                if count == 0:
+##                    print("計時歸零離開")
+##                    left()
+##                    count = 15
+##                    flag = True
+##                    break  
+##                else:
+##                    count -= 1
+##                    print(count)
+##                    sleep(1)
+##
+##            try:
+##                re_pair = driver.find_element("css selector","""span.MuiButton-label""") #新的
+##                if re_pair is not None:
+##                    re_pair.click()   
+##                    print("對方已離開，點擊重新配對..")
+##                    count = 15
+##                    flag = False
+##                    break
+##            except:
+##                pass
 
    
 
