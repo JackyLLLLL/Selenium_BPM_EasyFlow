@@ -14,7 +14,7 @@ def start_chat():
             actions = ActionChains(driver)
             
             if start_chat is not None:
-                sleep(0.3)
+                sleep(0.5)
                 actions.move_to_element(start_chat).click(start_chat)
                 actions.perform()
                 print("點擊開始聊天")
@@ -48,7 +48,6 @@ def re_pair():
     count = 15
     while True:
         try:
-            re_pair = driver.find_element("css selector","""div.system.test""")
             re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
             print(count)
             if re_pair is not None:
@@ -74,8 +73,9 @@ def left():
         try:
 
             driver.find_element("css selector","""div[id='changeButton']""").click()
-            sleep(0.5)
+            sleep(0.8)
             driver.find_element("css selector","""button#popup-yes.right""").click()
+            sleep(1)
             print("自動離開對話..")
             
             break
@@ -149,10 +149,11 @@ if __name__ == "__main__":
                     sleep(1)
 
             try:
-                re_pair = driver.find_element("css selector","""div.system.test""")
                 re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
                 if re_pair is not None:
-                    driver.find_element("css selector","""div#changeButton""").click()   
+                    sleep(0.5)
+                    driver.find_element("css selector","""div#changeButton""").click()
+                    sleep(0.8)
                     print("對方已離開，點擊重新配對..")
                     count = 15
                     flag = True
