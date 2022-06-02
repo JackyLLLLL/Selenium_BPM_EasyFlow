@@ -44,29 +44,29 @@ def messager(mes):
 
 
 
-def re_pair():
-    count = 15
-    while True:
-        try:
-            re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
-            print(count)
-            if re_pair is not None:
-                driver.find_element("css selector","""div#changeButton""").click()   
-                print("對方已離開，點擊重新配對..")        
-                break
- 
-            
-            elif count == 0:
-                driver.find_element("css selector","""div#changeButton""").click()
-                sleep(0.5)
-                driver.find_element("css selector","""button#popup-yes.right""").click()
-                count = 15
-                break
-            count -= 1
-           
-                
-        except Exception as e:
-            pass
+##def re_pair():
+##    count = 15
+##    while True:
+##        try:
+##            re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[11]/text()[1]""")
+##            print(count)
+##            if re_pair is not None:
+##                driver.find_element("css selector","""div#changeButton""").click()   
+##                print("對方已離開，點擊重新配對..")        
+##                break
+## 
+##            
+##            elif count == 0:
+##                driver.find_element("css selector","""div#changeButton""").click()
+##                sleep(0.5)
+##                driver.find_element("css selector","""button#popup-yes.right""").click()
+##                count = 15
+##                break
+##            count -= 1
+##           
+##                
+##        except Exception as e:
+##            pass
 
 def left():
      while True:
@@ -149,11 +149,10 @@ if __name__ == "__main__":
                     sleep(1)
 
             try:
-                re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
+                re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]/a""")
                 if re_pair is not None:
-                    sleep(0.5)
+                    sleep(1.5)
                     driver.find_element("css selector","""div#changeButton""").click()
-                    sleep(0.8)
                     print("對方已離開，點擊重新配對..")
                     count = 15
                     flag = True
