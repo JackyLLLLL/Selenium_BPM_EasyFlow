@@ -25,11 +25,12 @@ def start_chat():
 def messager(mes):
     while True:
         try:
-            driver.find_element("css selector","""input#messageInput""").send_keys(mes)         
-            break
+            paired_successfully = driver.find_element("xpath","""//*[@id="messages"]/div[4]""")
+            if paired_successfully:
+                driver.find_element("css selector","""input#messageInput""").send_keys(mes)         
+                break
         except:
             pass
-    sleep(1)
     send_button = driver.find_element("css selector","""div#sendButton""")
     actions = ActionChains(driver)
     if send_button:
@@ -48,7 +49,7 @@ def re_pair():
     while True:
         try:
             re_pair = driver.find_element("css selector","""div.system.test""")
-            
+            re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
             print(count)
             if re_pair is not None:
                 driver.find_element("css selector","""div#changeButton""").click()   
@@ -72,7 +73,7 @@ def left():
      while True:
         try:
 
-            driver.find_element("css selector","""div#changeButton""").click()
+            driver.find_element("css selector","""div[id='changeButton']""").click()
             sleep(0.5)
             driver.find_element("css selector","""button#popup-yes.right""").click()
             print("自動離開對話..")
@@ -90,6 +91,7 @@ url = r"https://wootalk.today/key/成人模式"
 chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 mes = r"台南182 找約or電愛"
+##mes = r"Hi"
 count = 15
 
 if __name__ == "__main__":
@@ -148,6 +150,7 @@ if __name__ == "__main__":
 
             try:
                 re_pair = driver.find_element("css selector","""div.system.test""")
+                re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]""")
                 if re_pair is not None:
                     driver.find_element("css selector","""div#changeButton""").click()   
                     print("對方已離開，點擊重新配對..")
