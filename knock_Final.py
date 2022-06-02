@@ -15,6 +15,7 @@ def start_chat():
             actions = ActionChains(driver)
             
             if start_chat is not None:
+                sleep(0.3)
                 actions.move_to_element(start_chat).click(start_chat)
                 actions.perform()
                 print("點擊開始聊天")
@@ -47,12 +48,14 @@ def messager(mes):
         except:
             pass
             
-    sleep(1)
     send_mes = driver.find_element("css selector",""".MuiButtonBase-root.MuiIconButton-root[aria-label='send']""") #送出訊息
     actions = ActionChains(driver)
     if send_mes:
-        actions.move_to_element(send_mes).click(send_mes)
-        actions.perform()   
+        try:
+            actions.move_to_element(send_mes).click(send_mes)
+            actions.perform()
+        except:
+            pass
     print("送出訊息")
 
 def re_pair():
@@ -101,9 +104,9 @@ def left():
 
 url = r"https://knock.tw/"
 mes = "台南182 找約or電愛"
-##mes = "Hi"
-##chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
-chrome_path = r"C:\Users\user\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+##mes = "Hi 女 等我一下"
+chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+##chrome_path = r"C:\Users\user\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 count = 15
 
@@ -129,38 +132,34 @@ if __name__ == "__main__":
 
     flag = True
     
-
+    countdown = 0
+    x = 0
+    y = 1
     while True:
-        y = random.uniform(1.3, 2.4)
-        print("Loop1")
+
+        print("Program Start")
         if flag == True:
             start_chat()
-##            sleep(y)
         messager(mes)
-        sleep(y)
-        print("1")
         while True:
             try:
                 re_pair = driver.find_element("css selector","""span.MuiButton-label""")
                 if re_pair:
                     re_pair.click()
+                    print("點擊重新配對")
                     flag = False
+                    countdown = 0
+                    y += 1
                     break
-                    sleep(1)
-
             except:
                 pass
 
-            
-            finally:
-                
-                sleep(y)
-                print("睡個覺一下")
 
+                if x == 0:
+                    countdown += 1
+                    print(f"累積配對人數:第{y}人,等待了: {countdown} 秒")
+                    sleep(1)
 
-
-##    //*[@id="__next"]/div/div/div[2]/div/div[2]/div/div[1]/div/div/div/ul/li[2]/div/div[2]/span/div
-##    //*[@id="__next"]/div/div/div[2]/div/div[2]/div/div[1]/div/div/div/ul/li[1]/div/div[2]/span/div
 
 ##    while True:
 ##        y = random.uniform(1.3, 2.4)
@@ -174,7 +173,9 @@ if __name__ == "__main__":
 ##        
 ##        while True:
 ##            try:
-##                respond = driver.find_element("css selector","""div[class^='jss']:nth-child(2)""")
+##                respond = driver.find_element("css selector","""div[style='']""")
+##                respond = driver.find_element("xpath","""""")
+##                
 ##                if respond:
 ##                    print("對方有回應")
 ##                    count = 15
@@ -203,11 +204,11 @@ if __name__ == "__main__":
 ##                    flag = False
 ##                    break
 ##            except:
-                pass
+##                pass
 
    
 
-                
+
 
 
             
