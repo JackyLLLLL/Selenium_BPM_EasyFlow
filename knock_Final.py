@@ -103,7 +103,7 @@ def left():
     
 
 url = r"https://knock.tw/"
-mes = "台南182男 28y 找約or電愛"
+mes = "台南182男 28y 下午放鬆電愛"
 ##mes = "Hi 女 等我一下"
 chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑

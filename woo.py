@@ -72,14 +72,24 @@ def left():
      while True:
         try:
 
-            driver.find_element("css selector","""div[id='changeButton']""").click()
-            sleep(0.8)
-            driver.find_element("css selector","""button#popup-yes.right""").click()
-            sleep(1)
+            left_button = driver.find_element("css selector","""div[id='changeButton']""")
+            if left_button:
+                left_button.click()
+                sleep(0.8)
+            conform = driver.find_element("css selector","""button#popup-yes.right""")
+            if conform:
+                conform.click()
+                sleep(1)
             print("自動離開對話..")
             
             break
         except Exception as e:
+            pass
+        try:
+            start_chat = driver.find_element("id","""startButton""")
+            if start_chat:
+                start_chat.click()
+        except:
             pass
     
 
@@ -90,7 +100,7 @@ url = r"https://wootalk.today/key/成人模式"
 chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑
 ##chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
-mes = r"台南182男 28y 找約or電愛"
+mes = r"台南182男 28y 下午放鬆電愛"
 ##mes = r"Hi"
 count = 15
 
@@ -147,12 +157,16 @@ if __name__ == "__main__":
 
             try:
                 re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]/a""")
+##                re_pair_2 =driver.find_element("xpath","""//*[@id="messages"]/div[10]/a""")
+                
+
                 if re_pair is not None:
                     driver.find_element("css selector","""div#changeButton""").click()
                     print("對方已離開，點擊重新配對..")
                     count = 15
                     flag = True
                     break
+
             except:
                 pass
 
