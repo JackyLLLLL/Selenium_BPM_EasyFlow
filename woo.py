@@ -43,31 +43,6 @@ def messager(mes):
     print("送出訊息")
 
 
-
-##def re_pair():
-##    count = 15
-##    while True:
-##        try:
-##            re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[11]/text()[1]""")
-##            print(count)
-##            if re_pair is not None:
-##                driver.find_element("css selector","""div#changeButton""").click()   
-##                print("對方已離開，點擊重新配對..")        
-##                break
-## 
-##            
-##            elif count == 0:
-##                driver.find_element("css selector","""div#changeButton""").click()
-##                sleep(0.5)
-##                driver.find_element("css selector","""button#popup-yes.right""").click()
-##                count = 15
-##                break
-##            count -= 1
-##           
-##                
-##        except Exception as e:
-##            pass
-
 def left():
      while True:
         try:
@@ -98,9 +73,9 @@ def left():
 url = r"https://wootalk.today/key/成人模式"
 
 chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑
-##chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
+chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" 
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
-mes = r"台南182男 28y 下午放鬆電愛"
+mes = r"台南182男 28y 約"
 ##mes = r"Hi"
 count = 15
 
@@ -157,8 +132,7 @@ if __name__ == "__main__":
 
             try:
                 re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[8]/a""")
-##                re_pair_2 =driver.find_element("xpath","""//*[@id="messages"]/div[10]/a""")
-                
+
 
                 if re_pair is not None:
                     driver.find_element("css selector","""div#changeButton""").click()
@@ -170,6 +144,19 @@ if __name__ == "__main__":
             except:
                 pass
 
+            try:
+                re_pair = driver.find_element("xpath","""//*[@id="messages"]/div[10]/a""")
+
+
+                if re_pair is not None:
+                    driver.find_element("css selector","""div#changeButton""").click()
+                    print("[10]對方已離開，點擊重新配對..")
+                    count = 15
+                    flag = True
+                    break
+
+            except:
+                pass
 
 
 
