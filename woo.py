@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     opt = webdriver.ChromeOptions()
     opt.add_argument('--user-agent=%s' % user_agent)
-    driver = webdriver.Chrome(service = s)
+    driver = webdriver.Chrome()
 
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
       "source": """
