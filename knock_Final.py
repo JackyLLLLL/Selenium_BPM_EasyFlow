@@ -103,7 +103,7 @@ def left():
     
 
 url = r"https://knock.tw/"
-mes = "台南182/78 男 29y 路竹上班中 找今天下班約做愛"
+mes = "台南182/78 男 29y 路竹上班中 找今天下班約"
 ##mes = "Hi 女 等我一下"
 chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
 chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
     opt = webdriver.ChromeOptions()
     opt.add_argument('--user-agent=%s' % user_agent)
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(service=s, options=opt)
 
     driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
       "source": """
