@@ -72,8 +72,8 @@ def left():
     
 url = r"https://wootalk.today/key/成人模式"
 
-chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑
-chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" 
+chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe" #家裡的driver路徑
+chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe" 
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 mes = r"台南182男 28y 約"
 ##mes = r"Hi"
@@ -81,7 +81,7 @@ count = 15
 
 if __name__ == "__main__":
     
-    s = Service(chrome_path)
+    s = Service()
 
     opt = webdriver.ChromeOptions()
     opt.add_argument('--user-agent=%s' % user_agent)

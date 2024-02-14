@@ -106,7 +106,7 @@ url = r"https://knock.tw/"
 mes = "台南182/78 男 29y 路竹上班中 找今天下班約"
 ##mes = "Hi 女 等我一下"
 chrome_path = r"C:\Users\jacky-lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe"
-chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python310\Scripts\chromedriver.exe" #家裡的driver路徑
+chrome_path = r"C:\Users\jacky.lin\AppData\Local\Programs\Python\Python311\Scripts\chromedriver.exe" #家裡的driver路徑
 user_agent = r"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
 count = 15
 
